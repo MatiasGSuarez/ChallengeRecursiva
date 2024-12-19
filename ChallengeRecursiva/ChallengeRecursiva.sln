@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeRecursiva", "ChallengeRecursiva\ChallengeRecursiva.csproj", "{30CBF173-4E34-4ED3-BE9B-50D178416683}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChallengeRecursiva", "ChallengeRecursiva\ChallengeRecursiva.csproj", "{30CBF173-4E34-4ED3-BE9B-50D178416683}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{5127B958-CFD3-4C77-9F45-8CCF8CA0308B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{5127B958-CFD3-4C77-9F45-8CCF8CA0308B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecursivaAPI", "RecursivaAPI\RecursivaAPI.csproj", "{1C738B7D-4574-4837-89E6-58FE3545E166}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5127B958-CFD3-4C77-9F45-8CCF8CA0308B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5127B958-CFD3-4C77-9F45-8CCF8CA0308B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5127B958-CFD3-4C77-9F45-8CCF8CA0308B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C738B7D-4574-4837-89E6-58FE3545E166}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C738B7D-4574-4837-89E6-58FE3545E166}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C738B7D-4574-4837-89E6-58FE3545E166}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C738B7D-4574-4837-89E6-58FE3545E166}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

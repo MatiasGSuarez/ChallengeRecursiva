@@ -1,13 +1,21 @@
 using ChallengeRecursiva.Data;
+using ChallengeRecursiva.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Model;
+using Syncfusion.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddSyncfusionBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+
+// Scoped porque necesito una instancia por usuario-
+//builder.Services.AddScoped<SocioService>();
+builder.Services.AddHttpClient<SocioService>();
 
 var app = builder.Build();
 
