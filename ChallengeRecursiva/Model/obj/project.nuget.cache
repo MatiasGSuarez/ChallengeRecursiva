@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "r84TZYaNwAco7E3+xREjGreKeOHCJtSFIQAVd4L/PkZkPCPnOeQgEnr/FR4RPb3Zoat7na6Ysjg2DP9aMqdHDw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\matia\\Escritorio\\ChallengeRecursiva\\ChallengeRecursiva\\Model\\Model.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\matia\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.16\\microsoft.windowsdesktop.app.ref.7.0.16.nupkg.sha512",
+    "C:\\Users\\matia\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.16\\microsoft.netcore.app.ref.7.0.16.nupkg.sha512",
+    "C:\\Users\\matia\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.16\\microsoft.aspnetcore.app.ref.7.0.16.nupkg.sha512"
+  ],
+  "logs": []
+}
