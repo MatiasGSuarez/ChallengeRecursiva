@@ -1,6 +1,7 @@
 ﻿@page "/ListaDeMiembros"
 @using ChallengeRecursiva.Services
 @using Syncfusion.Blazor
+@using Syncfusion.Blazor.Cards
 @using Syncfusion.Blazor.Data
 @using Syncfusion.Blazor.Grids
 @using Model
@@ -8,7 +9,20 @@
 @inject SocioService SociosService
 @inject NavigationManager NavManager
 
+
 <div class="container mt-5">
+    <div class="mt-3 mb-3">
+        <SfCard>
+            <CardHeader Title="SUPERLIGA" />
+            <CardContent>
+                Total de Socios Registrados: @(totalSocios == 0 ? "Sin datos" : totalSocios.ToString())
+            </CardContent>
+            <div class="d-flex align-content-center">
+                <button @onclick="CargarTotalSocios">Cargar Total</button>
+            </div>
+            
+        </SfCard>
+    </div>
     <SfGrid ID="Grid" 
             @ref="@Grid"
             TValue="SocioDTO"
@@ -42,6 +56,7 @@
 
     public Query GridQry = new Query();
 
+    public int totalSocios;
     #endregion
 
     #region Methods
@@ -51,7 +66,10 @@
         Grid = new SfGrid<SocioDTO>();
         sociosService = SociosService;
     }
-
+    private async Task CargarTotalSocios()
+    {
+        totalSocios = await sociosService.GetTotalSociosAsync();
+    }
     #endregion
 
     #region Grilla
