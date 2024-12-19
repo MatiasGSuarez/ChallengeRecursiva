@@ -39,7 +39,7 @@ namespace RecursivaAPI.Controllers
         [HttpGet("Promedio")]
         public ActionResult<List<Socio>> Get_PromedioEdadSociosRacing()
         {
-            double promedio = 0;
+            int promedio = 0;
             List<Socio> socios = _csvReaderService.ReadCsvFromFile();
 
             if (socios != null && socios.Any())
@@ -49,7 +49,7 @@ namespace RecursivaAPI.Controllers
                 {
                     var edadTot = sociosRacing.Sum(x => x.Edad);
                     var cantSocios = sociosRacing.Count();
-                    promedio = (double)edadTot / cantSocios;
+                    promedio = (int)edadTot / cantSocios;
                 }
             }
             return Ok(promedio);
@@ -123,7 +123,7 @@ namespace RecursivaAPI.Controllers
                     {
                         Equipo = g.Key,
                         CantidadSocios = g.Count(),
-                        PromedioEdad = g.Average(x => x.Edad),
+                        PromedioEdad = (int)g.Average(x => x.Edad),
                         EdadMinima = g.Min(x => x.Edad),
                         EdadMaxima = g.Max(x => x.Edad)
                     })

@@ -30,12 +30,12 @@ namespace ChallengeRecursiva.Services
         }
 
         // 2. Obtener el promedio de edad de los socios de Racing
-        public async Task<double> GetPromedioEdadSociosRacingAsync()
+        public async Task<int> GetPromedioEdadSociosRacingAsync()
         {
             var response = await _httpClient.GetAsync("/Socio/Promedio");
             if (response.IsSuccessStatusCode)
             {
-                var promedio = await response.Content.ReadFromJsonAsync<double>();
+                var promedio = await response.Content.ReadFromJsonAsync<int>();
                 return promedio;
             }
             else

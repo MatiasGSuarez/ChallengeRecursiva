@@ -15,10 +15,27 @@
         <SfCard>
             <CardHeader Title="SUPERLIGA" />
             <CardContent>
-                Total de Socios Registrados: @(totalSocios == 0 ? "Sin datos" : totalSocios.ToString())
+                <p>
+                    Total de Socios Registrados: @(totalSocios)
+                </p>
+
+                <p>
+                    Promedio de edad de socios de RACING: @(promedioEdadSociosRacing) 
+                </p>
+
+                <p>
+                    Cinco nombres mas comunes entre los hinchas de River:
+                    <ul>
+                        @foreach (var nombre in nombresMasComunesHinhasDeRiver)
+                        {
+                            <li>@nombre</li>  <!-- Mostrar cada nombre -->
+                        }
+                    </ul>
+                </p>
+        
             </CardContent>
             <div class="d-flex align-content-center">
-                <button @onclick="CargarTotalSocios">Cargar Total</button>
+                <button type="button" class="btn btn-primary mb-2" @onclick="CargarTotalSocios" >Cargar Datos</button>
             </div>
             
         </SfCard>
@@ -38,13 +55,18 @@
         </GridPageSettings>
         <GridEditSettings AllowAdding="false" AllowDeleting="false" AllowEditing="false" Mode="EditMode.Normal"></GridEditSettings>
         <GridColumns>
-            <GridColumn Field=@nameof(SocioDTO.Nombre) HeaderText="Nombre" TextAlign="TextAlign.Left"></GridColumn>
-            <GridColumn Field=@nameof(SocioDTO.Edad) HeaderText="Edad" TextAlign="TextAlign.Left"></GridColumn>
-            <GridColumn Field=@nameof(SocioDTO.Equipo) HeaderText="Equipo" TextAlign="TextAlign.Left"></GridColumn>
+            <GridColumn Field=@nameof(SocioDTO.Nombre) HeaderText="Nombre" TextAlign="TextAlign.Center"></GridColumn>
+            <GridColumn Field=@nameof(SocioDTO.Edad) HeaderText="Edad" TextAlign="TextAlign.Center"></GridColumn>
+            <GridColumn Field=@nameof(SocioDTO.Equipo) HeaderText="Equipo" TextAlign="TextAlign.Center"></GridColumn>
         </GridColumns>
     </SfGrid>
 </div>
-
+<style>
+    .e-card .e-card-header {
+        
+        text-align: center
+    }
+</style>
 @code {
     #region Vars
 
@@ -57,6 +79,10 @@
     public Query GridQry = new Query();
 
     public int totalSocios;
+
+    public int promedioEdadSociosRacing;
+
+    public List<string> nombresMasComunesHinhasDeRiver = new List<string>();
     #endregion
 
     #region Methods
@@ -69,7 +95,10 @@
     private async Task CargarTotalSocios()
     {
         totalSocios = await sociosService.GetTotalSociosAsync();
+        promedioEdadSociosRacing = await sociosService.GetPromedioEdadSociosRacingAsync(); 
+        nombresMasComunesHinhasDeRiver = await sociosService.GetTop5NombresRiverAsync();
     }
+
     #endregion
 
     #region Grilla

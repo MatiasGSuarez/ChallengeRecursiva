@@ -10,7 +10,7 @@ namespace Model
     {
         public string Equipo { get; set; }
         public int CantidadSocios { get; set; }
-        public double PromedioEdad { get; set; }
+        public int PromedioEdad { get; set; }
         public int EdadMinima { get; set; }
         public int EdadMaxima { get; set; }
     }

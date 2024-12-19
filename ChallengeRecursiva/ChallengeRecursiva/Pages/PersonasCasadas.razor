@@ -1,0 +1,73 @@
+﻿@page "/PersonasCasadas"
+<h3>Estadisticas de Equipos </h3>
+@using ChallengeRecursiva.Services
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Cards
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Grids
+@using Model
+
+@inject SocioService SociosService
+@inject NavigationManager NavManager
+
+<div class="container">
+    <SfGrid ID="Grid"
+            @ref="@Grid"
+            TValue="Estadisticas"
+            AllowPaging="true"
+            AllowSorting="true"
+            AllowReordering="true"
+            EnableAltRow="true"
+            Width="100%">
+        <Syncfusion.Blazor.Data.SfDataManager AdaptorInstance="@typeof(CustomAdaptor)" Adaptor="Adaptors.CustomAdaptor"></Syncfusion.Blazor.Data.SfDataManager>
+        <GridPageSettings PageSize="10"
+                          PageSizes="true">
+        </GridPageSettings>
+        <GridEditSettings AllowAdding="false" AllowDeleting="false" AllowEditing="false" Mode="EditMode.Normal"></GridEditSettings>
+        <GridColumns>
+            <GridColumn Field=@nameof(Estadisticas.Equipo) HeaderText="Equipo" TextAlign="TextAlign.Center"></GridColumn>
+            <GridColumn Field=@nameof(Estadisticas.EdadMaxima) HeaderText="Edad Maxima" TextAlign="TextAlign.Center"></GridColumn>
+            <GridColumn Field=@nameof(Estadisticas.EdadMinima) HeaderText="Edad Minima" TextAlign="TextAlign.Center"></GridColumn>
+            <GridColumn Field=@nameof(Estadisticas.PromedioEdad) HeaderText="Edad Promedio" TextAlign="TextAlign.Center"></GridColumn>
+
+        </GridColumns>
+    </SfGrid>
+</div>
+
+
+
+@code {
+    public static SocioService sociosService;
+
+    private SfGrid<Estadisticas> Grid { get; set; }
+
+    public List<Estadisticas> Customers { get; set; }
+
+    public Query GridQry = new Query();
+
+    #region Methods
+    protected override void OnInitialized()
+    {
+        Grid = new SfGrid<Estadisticas>();
+        sociosService = SociosService;
+    }
+    #endregion
+
+    #region grilla
+    public class CustomAdaptor : DataAdaptor
+    {
+        public override async Task<object> ReadAsync(DataManagerRequest dm, string key = null)
+        {
+            try
+            {
+                var tGridData = await sociosService.GetEstadisticasEquiposAsync(dm);
+                return dm.RequiresCounts ? tGridData : (object)tGridData;
+            }
+            catch (Exception ex)
+            {
+                return new DataResult();
+            }
+        }
+    }
+    #endregion
+}
